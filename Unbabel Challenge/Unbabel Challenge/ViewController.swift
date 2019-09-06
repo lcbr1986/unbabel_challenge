@@ -12,7 +12,9 @@ class ViewController: UIViewController {
     
     var networkController: NetworkInterface = NetworkCommunicator(baseUrl: "https://jsonplaceholder.typicode.com")
     var posts: [Post] = []
+    let cellReuseIdentifier = "cell"
     
+    @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -30,6 +32,9 @@ class ViewController: UIViewController {
                     return
                 }
                 self.posts = PostParser.parsePosts(unparsedPosts: data)
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
             }
         }
     }
@@ -43,5 +48,21 @@ class ViewController: UIViewController {
             completion(data, error)
         }
     }
+}
+
+extension ViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.posts.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell:UITableViewCell = self.tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier) ?? UITableViewCell()
+        
+        cell.textLabel?.text = self.posts[indexPath.row].title
+        
+        return cell
+    }
+    
+    
 }
 
