@@ -13,6 +13,11 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        let network: NetworkCommunicator = NetworkCommunicator(baseUrl: "http://jsonplaceholder.typicode.com")
+        
+        network.makeGETRequest(url: "posts") { (data, error) in
+            
+        }
     }
 
 

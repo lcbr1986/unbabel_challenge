@@ -17,7 +17,13 @@ class NetworkCommunicator: NetworkInterface {
     }
     
     func makeGETRequest(url: String, completion: (Data?, Error?) -> Void) {
+        let request: Request = Alamofire.request(baseUrl + "/" + url)
         
+        if let request = request as? DataRequest {
+            request.responseString { response in
+                debugPrint(response)
+            }
+        }
     }
     
 
