@@ -17,6 +17,9 @@
 		08D216A52321105A00ABFA77 /* Unbabel_ChallengeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D216A42321105A00ABFA77 /* Unbabel_ChallengeUITests.swift */; };
 		08D216B3232277D400ABFA77 /* NetworkInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D216B2232277D400ABFA77 /* NetworkInterface.swift */; };
 		08D216B723227B9900ABFA77 /* NetworkCommunicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D216B623227B9900ABFA77 /* NetworkCommunicator.swift */; };
+		08D216BA232283A100ABFA77 /* NetworkMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D216B9232283A100ABFA77 /* NetworkMock.swift */; };
+		08D216BB2322847400ABFA77 /* NetworkInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D216B2232277D400ABFA77 /* NetworkInterface.swift */; };
+		08D216BD232284F700ABFA77 /* NetworkResponses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D216BC232284F700ABFA77 /* NetworkResponses.swift */; };
 		7AB37021953C59A5DD5F2FC0 /* Pods_Unbabel_ChallengeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 235FF53CD3656D8EA91970D7 /* Pods_Unbabel_ChallengeUITests.framework */; };
 		A40717779DAAA3718FD5FF4E /* Pods_Unbabel_Challenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E809D311FC08E2B6E7532A9 /* Pods_Unbabel_Challenge.framework */; };
 /* End PBXBuildFile section */
@@ -54,6 +57,8 @@
 		08D216A62321105A00ABFA77 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		08D216B2232277D400ABFA77 /* NetworkInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkInterface.swift; sourceTree = "<group>"; };
 		08D216B623227B9900ABFA77 /* NetworkCommunicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkCommunicator.swift; sourceTree = "<group>"; };
+		08D216B9232283A100ABFA77 /* NetworkMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMock.swift; sourceTree = "<group>"; };
+		08D216BC232284F700ABFA77 /* NetworkResponses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResponses.swift; sourceTree = "<group>"; };
 		235FF53CD3656D8EA91970D7 /* Pods_Unbabel_ChallengeUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Unbabel_ChallengeUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C6BE776ECBDE1BC2F37934E /* Pods-Unbabel Challenge.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unbabel Challenge.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Unbabel Challenge/Pods-Unbabel Challenge.debug.xcconfig"; sourceTree = "<group>"; };
 		3F3105E656EF5E6CAB1407A4 /* Pods-Unbabel ChallengeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unbabel ChallengeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Unbabel ChallengeTests/Pods-Unbabel ChallengeTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -133,6 +138,7 @@
 		08D216982321105900ABFA77 /* Unbabel ChallengeTests */ = {
 			isa = PBXGroup;
 			children = (
+				08D216B82322837900ABFA77 /* Mocks */,
 				08D216992321105900ABFA77 /* Unbabel_ChallengeTests.swift */,
 				08D2169B2321105900ABFA77 /* Info.plist */,
 			);
@@ -162,6 +168,15 @@
 				08D216B623227B9900ABFA77 /* NetworkCommunicator.swift */,
 			);
 			path = NetworkLayer;
+			sourceTree = "<group>";
+		};
+		08D216B82322837900ABFA77 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				08D216B9232283A100ABFA77 /* NetworkMock.swift */,
+				08D216BC232284F700ABFA77 /* NetworkResponses.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 		DA86590116EFC483D189DE63 /* Frameworks */ = {
@@ -424,6 +439,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				08D216BA232283A100ABFA77 /* NetworkMock.swift in Sources */,
+				08D216BD232284F700ABFA77 /* NetworkResponses.swift in Sources */,
+				08D216BB2322847400ABFA77 /* NetworkInterface.swift in Sources */,
 				08D2169A2321105900ABFA77 /* Unbabel_ChallengeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

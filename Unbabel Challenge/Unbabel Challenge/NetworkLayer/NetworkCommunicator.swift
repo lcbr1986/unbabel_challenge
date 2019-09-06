@@ -16,13 +16,24 @@ class NetworkCommunicator: NetworkInterface {
         self.baseUrl = baseUrl
     }
     
-    func makeGETRequest(url: String, completion: (Data?, Error?) -> Void) {
-        let request: Request = Alamofire.request(baseUrl + "/" + url)
-        
-        if let request = request as? DataRequest {
-            request.responseString { response in
-                debugPrint(response)
+    func makeGETRequest(url: RequestTypes, completion: @escaping ([[String: Any]]?, Error?) -> Void) {
+        let request = Alamofire.request(baseUrl + "/" + url.rawValue, method: .get)
+
+        request.responseJSON { response in
+            response.result.ifSuccess {
+                guard let json = response.result.value as? [[String: Any]] else {
+                    print("didn't get todo object as JSON from API \(type(of: response.result))")
+                    return
+                }
+                debugPrint("Result: \(json)")
+                completion(json, nil)
             }
+            response.result.ifFailure {
+                debugPrint("Error: \(String(describing: response.result.error))")
+                completion(nil, response.result.error)
+            }
+            
+            
         }
     }
     

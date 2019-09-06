@@ -10,5 +10,11 @@ import Foundation
 
 protocol NetworkInterface {
     var baseUrl: String { get }
-    func makeGETRequest(url: String, completion: (Data?, Error?) -> Void)
+    func makeGETRequest(url: RequestTypes, completion: @escaping([[String: Any]]?, Error?) -> Void)
+}
+
+enum RequestTypes: String {
+    case posts = "posts"
+    case users = "users"
+    case comments = "comments"
 }
