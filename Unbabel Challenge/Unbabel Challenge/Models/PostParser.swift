@@ -8,8 +8,8 @@
 
 import UIKit
 
-class PostParser {
-    func parsePosts(unparsedPosts: [[String: Any]]) -> [Post] {
+struct PostParser {
+    static func parsePosts(unparsedPosts: [[String: Any]]) -> [Post] {
         var posts: [Post] = []
         for unparsedPost in unparsedPosts {
             if let userId = unparsedPost["userId"] as? Int,

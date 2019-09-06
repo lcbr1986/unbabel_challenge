@@ -11,11 +11,27 @@ import UIKit
 class ViewController: UIViewController {
     
     var networkController: NetworkInterface = NetworkCommunicator(baseUrl: "https://jsonplaceholder.typicode.com")
+    var posts: [Post] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        makeInitialCall()
         
+    }
+    
+    func makeInitialCall() {
+        getPosts { (data, error) in
+            if let error = error {
+                debugPrint(error.localizedDescription)
+            } else {
+                guard let data = data else {
+                    debugPrint("No data")
+                    return
+                }
+                self.posts = PostParser.parsePosts(unparsedPosts: data)
+            }
+        }
     }
 
     func setNetworkController(networkController: NetworkInterface) {
