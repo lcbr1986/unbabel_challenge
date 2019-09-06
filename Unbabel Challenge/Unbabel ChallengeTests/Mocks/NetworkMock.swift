@@ -7,6 +7,7 @@
 //
 
 import UIKit
+@testable import Unbabel_Challenge
 
 class NetworkMock: NetworkInterface {
     var baseUrl: String = ""

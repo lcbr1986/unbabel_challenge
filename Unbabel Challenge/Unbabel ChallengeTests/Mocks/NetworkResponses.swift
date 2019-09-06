@@ -7,6 +7,7 @@
 //
 
 import Foundation
+@testable import Unbabel_Challenge
 
 struct NetworkResponses {
     static func getResponse(responseType: RequestTypes) -> [[String: Any]] {
