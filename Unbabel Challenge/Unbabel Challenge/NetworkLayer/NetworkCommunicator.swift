@@ -31,10 +31,6 @@ class NetworkCommunicator: NetworkInterface {
             response.result.ifFailure {
                 completion(nil, response.result.error)
             }
-            
-            
         }
     }
-    
-
 }
