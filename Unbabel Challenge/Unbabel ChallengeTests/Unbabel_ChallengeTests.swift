@@ -22,11 +22,23 @@ class Unbabel_ChallengeTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testParsePostResponse() {
-        viewController.getPosts { (data, error) in
+    func testGetPostsResponse() {
+        viewController.getPosts { (data, _) in
             XCTAssertEqual(data?.count, 4)
         }
-        
+    }
+    
+    func testParsePostsResponse() {
+        viewController.getPosts { (data, _) in
+            let postParser = PostParser()
+            guard let data = data else {
+                XCTFail()
+                return
+            }
+            let posts = postParser.parsePosts(unparsedPosts: data)
+            XCTAssertEqual(posts.count, 4)
+            XCTAssertEqual(posts[0], Post(userId: 1, id: 1, title: "sunt aut facere repellat provident occaecati excepturi optio reprehenderit", body: "quia et suscipit suscipit recusandae consequuntur expedita et cum reprehenderit molestiae ut ut quas totam nostrum rerum est autem sunt rem eveniet architecto"))
+        }
     }
 
 }

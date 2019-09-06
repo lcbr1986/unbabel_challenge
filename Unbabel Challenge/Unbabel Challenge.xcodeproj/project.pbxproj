@@ -19,6 +19,8 @@
 		08D216B723227B9900ABFA77 /* NetworkCommunicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D216B623227B9900ABFA77 /* NetworkCommunicator.swift */; };
 		08D216BA232283A100ABFA77 /* NetworkMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D216B9232283A100ABFA77 /* NetworkMock.swift */; };
 		08D216BD232284F700ABFA77 /* NetworkResponses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D216BC232284F700ABFA77 /* NetworkResponses.swift */; };
+		08D216C32322B3AD00ABFA77 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D216C22322B3AD00ABFA77 /* Post.swift */; };
+		08D216C52322B3BC00ABFA77 /* PostParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D216C42322B3BC00ABFA77 /* PostParser.swift */; };
 		7AB37021953C59A5DD5F2FC0 /* Pods_Unbabel_ChallengeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 235FF53CD3656D8EA91970D7 /* Pods_Unbabel_ChallengeUITests.framework */; };
 		A40717779DAAA3718FD5FF4E /* Pods_Unbabel_Challenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E809D311FC08E2B6E7532A9 /* Pods_Unbabel_Challenge.framework */; };
 /* End PBXBuildFile section */
@@ -58,6 +60,8 @@
 		08D216B623227B9900ABFA77 /* NetworkCommunicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkCommunicator.swift; sourceTree = "<group>"; };
 		08D216B9232283A100ABFA77 /* NetworkMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMock.swift; sourceTree = "<group>"; };
 		08D216BC232284F700ABFA77 /* NetworkResponses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResponses.swift; sourceTree = "<group>"; };
+		08D216C22322B3AD00ABFA77 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		08D216C42322B3BC00ABFA77 /* PostParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostParser.swift; sourceTree = "<group>"; };
 		235FF53CD3656D8EA91970D7 /* Pods_Unbabel_ChallengeUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Unbabel_ChallengeUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C6BE776ECBDE1BC2F37934E /* Pods-Unbabel Challenge.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unbabel Challenge.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Unbabel Challenge/Pods-Unbabel Challenge.debug.xcconfig"; sourceTree = "<group>"; };
 		3F3105E656EF5E6CAB1407A4 /* Pods-Unbabel ChallengeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unbabel ChallengeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Unbabel ChallengeTests/Pods-Unbabel ChallengeTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -122,6 +126,7 @@
 		08D216832321105800ABFA77 /* Unbabel Challenge */ = {
 			isa = PBXGroup;
 			children = (
+				08D216C12322B38E00ABFA77 /* Models */,
 				08D216B523227B3800ABFA77 /* NetworkLayer */,
 				08D216B423227B2200ABFA77 /* Interfaces */,
 				08D216842321105800ABFA77 /* AppDelegate.swift */,
@@ -176,6 +181,15 @@
 				08D216BC232284F700ABFA77 /* NetworkResponses.swift */,
 			);
 			path = Mocks;
+			sourceTree = "<group>";
+		};
+		08D216C12322B38E00ABFA77 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				08D216C22322B3AD00ABFA77 /* Post.swift */,
+				08D216C42322B3BC00ABFA77 /* PostParser.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		DA86590116EFC483D189DE63 /* Frameworks */ = {
@@ -431,6 +445,8 @@
 				08D216B3232277D400ABFA77 /* NetworkInterface.swift in Sources */,
 				08D216852321105800ABFA77 /* AppDelegate.swift in Sources */,
 				08D216B723227B9900ABFA77 /* NetworkCommunicator.swift in Sources */,
+				08D216C52322B3BC00ABFA77 /* PostParser.swift in Sources */,
+				08D216C32322B3AD00ABFA77 /* Post.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
