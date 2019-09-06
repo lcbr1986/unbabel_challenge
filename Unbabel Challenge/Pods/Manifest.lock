@@ -1,16 +1,16 @@
 PODS:
-  - Swifter (1.4.7)
+  - Alamofire (4.8.2)
 
 DEPENDENCIES:
-  - Swifter
+  - Alamofire
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
-    - Swifter
+    - Alamofire
 
 SPEC CHECKSUMS:
-  Swifter: 2327ef5d872c638aebab79646ce494af508b0c8f
+  Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
 
-PODFILE CHECKSUM: 55bc4fdf727035e89444cd7506a83eb9382ce8b9
+PODFILE CHECKSUM: 8f891d042ce0cf8032054cd3c790703168e8685e
 
 COCOAPODS: 1.5.3
