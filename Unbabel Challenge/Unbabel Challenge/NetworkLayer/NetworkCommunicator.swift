@@ -22,14 +22,13 @@ class NetworkCommunicator: NetworkInterface {
         request.responseJSON { response in
             response.result.ifSuccess {
                 guard let json = response.result.value as? [[String: Any]] else {
-                    print("didn't get todo object as JSON from API \(type(of: response.result))")
+                    let error = NSError(domain: "", code: 100, userInfo: ["Error Message": "Parsing Error"])
+                    completion(nil, error)
                     return
                 }
-                debugPrint("Result: \(json)")
                 completion(json, nil)
             }
             response.result.ifFailure {
-                debugPrint("Error: \(String(describing: response.result.error))")
                 completion(nil, response.result.error)
             }
             
