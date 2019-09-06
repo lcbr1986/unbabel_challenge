@@ -1,0 +1,6 @@
+framework module Pods_Unbabel_Challenge {
+  umbrella header "Pods-Unbabel Challenge-umbrella.h"
+
+  export *
+  module * { export * }
+}
