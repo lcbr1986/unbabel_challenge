@@ -24,7 +24,7 @@ class ViewController: UIViewController {
     
     func tryLocalStorage() {
         localStorage.getStoredItems(type: .posts) { (items) in
-            guard let items = items as? [Post] else {
+            guard let items = items as? [Post] , items.count > 0 else {
                 self.makePostsCall()
                 return
             }

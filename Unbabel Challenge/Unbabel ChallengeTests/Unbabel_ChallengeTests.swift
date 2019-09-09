@@ -53,5 +53,11 @@ class Unbabel_ChallengeTests: XCTestCase {
         viewController.tryLocalStorage()
         XCTAssert(networkMock.makeRequest)
     }
+    
+    func testIfStorageReturnsValuesNetworkCallIsNotMade() {
+        storageMock.isEmpty = false
+        viewController.tryLocalStorage()
+        XCTAssertFalse(networkMock.makeRequest)
+    }
 
 }
