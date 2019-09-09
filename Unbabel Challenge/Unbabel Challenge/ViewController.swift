@@ -85,6 +85,14 @@ extension ViewController: UITableViewDataSource {
         return cell
     }
     
-    
 }
-
+// MARK: - Navigation
+extension ViewController {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "detailSegue" {
+            let detailViewController = segue.destination as! DetailViewController
+            let index = self.tableView.indexPathForSelectedRow?.row ?? 0
+            detailViewController.post = self.posts[index]
+        }
+    }
+}
