@@ -12,8 +12,10 @@ import UIKit
 class NetworkMock: NetworkInterface {
     var baseUrl: String = ""
     var returnError = false
+    var makeRequest = false
     
     func makeGETRequest(url: RequestTypes, completion: ([[String: Any]]?, Error?) -> Void) {
+        makeRequest = true
         if returnError {
             let error = NSError(domain: "domain", code: 100, userInfo: nil)
             completion(nil, error)

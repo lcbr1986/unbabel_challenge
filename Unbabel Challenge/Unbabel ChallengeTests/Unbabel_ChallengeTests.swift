@@ -11,22 +11,28 @@ import XCTest
 
 class Unbabel_ChallengeTests: XCTestCase {
 
-    let networkMock: NetworkInterface = NetworkMock() as NetworkInterface
+    let networkMock = NetworkMock()
+    let storageMock = StorageMock()
     let viewController = ViewController()
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
         viewController.setNetworkController(networkController: networkMock )
+        viewController.setLocalStorage(localStorage: storageMock)
+        networkMock.makeRequest = false
     }
 
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
+    
     func testGetPostsResponse() {
         viewController.getPosts { (data, _) in
             XCTAssertEqual(data?.count, 4)
         }
     }
+    
+    //    MARK: Parser tests
     
     func testParsePostsResponse() {
         viewController.getPosts { (data, _) in
@@ -38,6 +44,14 @@ class Unbabel_ChallengeTests: XCTestCase {
             XCTAssertEqual(posts.count, 4)
             XCTAssertEqual(posts[0], Post(userId: 1, id: 1, title: "sunt aut facere repellat provident occaecati excepturi optio reprehenderit", body: "quia et suscipit suscipit recusandae consequuntur expedita et cum reprehenderit molestiae ut ut quas totam nostrum rerum est autem sunt rem eveniet architecto"))
         }
+    }
+    
+    //    MARK: Storage tests
+    
+    func testIfStorageIsEmptyShouldMakeNetworkCall() {
+        storageMock.isEmpty = true
+        viewController.tryLocalStorage()
+        XCTAssert(networkMock.makeRequest)
     }
 
 }

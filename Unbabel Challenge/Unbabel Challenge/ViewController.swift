@@ -11,6 +11,7 @@ import UIKit
 class ViewController: UIViewController {
     
     var networkController: NetworkInterface = NetworkCommunicator(baseUrl: "https://jsonplaceholder.typicode.com")
+    var localStorage: StorageInterface = LocalPersistenceManager()
     var posts: [Post] = []
     let cellReuseIdentifier = "cell"
     
@@ -18,11 +19,20 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        makeInitialCall()
-        
+        tryLocalStorage()
     }
     
-    func makeInitialCall() {
+    func tryLocalStorage() {
+        localStorage.getStoredItems(type: .posts) { (items) in
+            guard let items = items as? [Post] else {
+                self.makePostsCall()
+                return
+            }
+            self.assignPosts(posts: items)
+        }
+    }
+    
+    func makePostsCall() {
         getPosts { (data, error) in
             if let error = error {
                 debugPrint(error.localizedDescription)
@@ -31,10 +41,7 @@ class ViewController: UIViewController {
                     debugPrint("No data")
                     return
                 }
-                self.posts = PostParser.parsePosts(unparsedPosts: data)
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
+                self.assignPosts(posts: PostParser.parsePosts(unparsedPosts: data))
             }
         }
     }
@@ -42,10 +49,23 @@ class ViewController: UIViewController {
     func setNetworkController(networkController: NetworkInterface) {
         self.networkController = networkController
     }
+    
+    func setLocalStorage(localStorage: StorageInterface) {
+        self.localStorage = localStorage
+    }
 
     func getPosts(completion: @escaping([[String: Any]]?, Error?) -> Void) {
         networkController.makeGETRequest(url: .posts) { (data, error) in
             completion(data, error)
+        }
+    }
+    
+    func assignPosts(posts: [Post]) {
+        self.posts = posts
+        DispatchQueue.main.async {
+            if (self.tableView != nil) {
+                self.tableView.reloadData()
+            }
         }
     }
 }
