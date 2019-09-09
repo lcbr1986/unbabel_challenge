@@ -41,7 +41,9 @@ class ViewController: UIViewController {
                     debugPrint("No data")
                     return
                 }
-                self.assignPosts(posts: PostParser.parsePosts(unparsedPosts: data))
+                let posts = PostParser.parsePosts(unparsedPosts: data)
+                self.localStorage.storeItems(type: .posts, items: posts)
+                self.assignPosts(posts: posts)
             }
         }
     }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct Post: Equatable {
+struct Post: Equatable, Codable {
     var userId: Int
     var id: Int
     var title: String
