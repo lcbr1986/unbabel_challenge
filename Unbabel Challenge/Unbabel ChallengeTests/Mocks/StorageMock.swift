@@ -21,8 +21,12 @@ class StorageMock: StorageInterface {
             case .posts:
                 completion([Post(userId: 0, id: 1, title: "Title", body: "Body")])
                 return
-            default:
-                completion([])
+            case .comments:
+                completion([Comment(postId: 1, id: 1, name: "name", email: "email", body: "body")])
+                return
+            case .users:
+                completion([User(id: 1, name: "name", email: "email", username: "username")])
+                return
             }
             
         }

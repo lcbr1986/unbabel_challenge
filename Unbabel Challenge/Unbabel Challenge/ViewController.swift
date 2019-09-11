@@ -10,8 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    var networkController: NetworkInterface = NetworkCommunicator(baseUrl: "https://jsonplaceholder.typicode.com")
-    var localStorage: StorageInterface = LocalPersistenceManager()
+    let dataFetcher = DataFetcher()
     var posts: [Post] = []
     let cellReuseIdentifier = "cell"
     
@@ -19,46 +18,21 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        tryLocalStorage()
+        getPosts()
     }
     
-    func tryLocalStorage() {
-        localStorage.getStoredItems(type: .posts) { (items) in
-            guard let items = items as? [Post] , items.count > 0 else {
-                self.makePostsCall()
-                return
-            }
-            self.assignPosts(posts: items)
-        }
-    }
-    
-    func makePostsCall() {
-        getPosts { (data, error) in
+    func getPosts() {
+        dataFetcher.tryLocalStorage(type: .posts) { (posts, error) in
             if let error = error {
-                debugPrint(error.localizedDescription)
+                debugPrint("There was an error: \(error.localizedDescription)")
+//                SHOW ERROR ALERT
             } else {
-                guard let data = data else {
-                    debugPrint("No data")
+                guard let posts = posts as? [Post] else {
+//                    Show error alert
                     return
                 }
-                let posts = PostParser.parsePosts(unparsedPosts: data)
-                self.localStorage.storeItems(type: .posts, items: posts)
                 self.assignPosts(posts: posts)
             }
-        }
-    }
-
-    func setNetworkController(networkController: NetworkInterface) {
-        self.networkController = networkController
-    }
-    
-    func setLocalStorage(localStorage: StorageInterface) {
-        self.localStorage = localStorage
-    }
-
-    func getPosts(completion: @escaping([[String: Any]]?, Error?) -> Void) {
-        networkController.makeGETRequest(url: .posts) { (data, error) in
-            completion(data, error)
         }
     }
     

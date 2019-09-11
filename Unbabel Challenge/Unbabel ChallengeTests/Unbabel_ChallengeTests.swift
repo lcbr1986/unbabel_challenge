@@ -14,10 +14,11 @@ class Unbabel_ChallengeTests: XCTestCase {
     let networkMock = NetworkMock()
     let storageMock = StorageMock()
     let viewController = ViewController()
+    let dataFetcher = DataFetcher()
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
-        viewController.setNetworkController(networkController: networkMock )
-        viewController.setLocalStorage(localStorage: storageMock)
+        dataFetcher.setNetworkController(networkController: networkMock )
+        dataFetcher.setLocalStorage(localStorage: storageMock)
         networkMock.makeRequest = false
     }
 
@@ -27,7 +28,13 @@ class Unbabel_ChallengeTests: XCTestCase {
 
     
     func testGetPostsResponse() {
-        viewController.getPosts { (data, _) in
+        dataFetcher.getItems(type: .posts) { (data, _) in
+            XCTAssertEqual(data?.count, 4)
+        }
+    }
+    
+    func testGetCommentsResponse() {
+        dataFetcher.getItems(type: .comments) { (data, _) in
             XCTAssertEqual(data?.count, 4)
         }
     }
@@ -35,7 +42,7 @@ class Unbabel_ChallengeTests: XCTestCase {
     //    MARK: Parser tests
     
     func testParsePostsResponse() {
-        viewController.getPosts { (data, _) in
+        dataFetcher.getItems(type: .posts) { (data, _) in
             guard let data = data else {
                 XCTFail()
                 return
@@ -46,17 +53,41 @@ class Unbabel_ChallengeTests: XCTestCase {
         }
     }
     
+    func testParseUserResponse() {
+        dataFetcher.getItems(type: .users) { (data, _) in
+            guard let data = data else {
+                XCTFail()
+                return
+            }
+            let users = UserParser.parsePosts(unparsedUsers: data)
+            XCTAssertEqual(users.count, 2)
+            XCTAssertEqual(users[0], User(id: 1, name: "Leanne Graham", email: "Sincere@april.biz", username: "Bret"))
+        }
+    }
+    
+    func testParseCommentResponse() {
+        dataFetcher.getItems(type: .comments) { (data, _) in
+            guard let data = data else {
+                XCTFail()
+                return
+            }
+            let comments = CommentParser.parseComments(unparsedComments: data)
+            XCTAssertEqual(comments.count, 4)
+            XCTAssertEqual(comments[0], Comment(postId: 1, id: 1, name: "id labore ex et quam laborum", email: "Eliseo@gardner.biz", body: "laudantium enim quasi est quidem magnam voluptate ipsam eos tempora quo necessitatibus dolor quam autem quasi reiciendis et nam sapiente accusantium"))
+        }
+    }
+    
     //    MARK: Storage tests
     
     func testIfStorageIsEmptyShouldMakeNetworkCall() {
         storageMock.isEmpty = true
-        viewController.tryLocalStorage()
+        dataFetcher.tryLocalStorage(type: .posts) { (_, _) in }
         XCTAssert(networkMock.makeRequest)
     }
     
     func testIfStorageReturnsValuesNetworkCallIsNotMade() {
         storageMock.isEmpty = false
-        viewController.tryLocalStorage()
+        dataFetcher.tryLocalStorage(type: .posts) { (_, _) in }
         XCTAssertFalse(networkMock.makeRequest)
     }
 

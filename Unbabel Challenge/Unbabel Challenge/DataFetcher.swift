@@ -13,7 +13,7 @@ class DataFetcher {
     var networkController: NetworkInterface = NetworkCommunicator(baseUrl: "https://jsonplaceholder.typicode.com")
     var localStorage: StorageInterface = LocalPersistenceManager()
     
-    func tryLocalStorage(type: StorageTypes, completion: @escaping ([Any]?) -> Void) {
+    func tryLocalStorage(type: StorageTypes, completion: @escaping ([Any]?, Error?) -> Void) {
         
         localStorage.getStoredItems(type: type) { (items) in
             switch type {
@@ -22,30 +22,31 @@ class DataFetcher {
                     self.makeCall(type: .posts, completion: completion)
                     return
                 }
-                completion(items)
+                completion(items, nil)
                 return
             case .comments:
                 guard let items = items as? [Comment] , items.count > 0 else {
                     self.makeCall(type: .comments, completion: completion)
                     return
                 }
-                completion(items)
+                completion(items, nil)
                 return
             case .users:
                 guard let items = items as? [User] , items.count > 0 else {
                     self.makeCall(type: .users, completion: completion)
                     return
                 }
-                completion(items)
+                completion(items, nil)
                 return
             }
         }
     }
     
-    func makeCall(type: RequestTypes, completion: @escaping ([Any]?) -> Void) {
+    func makeCall(type: RequestTypes, completion: @escaping ([Any]?, Error?) -> Void) {
         getItems(type: type) { (data, error) in
             if let error = error {
                 debugPrint(error.localizedDescription)
+                completion(nil, error)
             } else {
                 guard let data = data else {
                     debugPrint("No data")
@@ -55,17 +56,17 @@ class DataFetcher {
                 case .posts:
                     let posts = PostParser.parsePosts(unparsedPosts: data)
                     self.localStorage.storeItems(type: .posts, items: posts)
-                    completion(posts)
+                    completion(posts, nil)
                     return
                 case .comments:
                     let comments = CommentParser.parseComments(unparsedComments: data)
                     self.localStorage.storeItems(type: .comments, items: comments)
-                    completion(comments)
+                    completion(comments, nil)
                     return
                 case .users:
                     let users = UserParser.parsePosts(unparsedUsers: data)
                     self.localStorage.storeItems(type: .users, items: users)
-                    completion(users)
+                    completion(users, nil)
                     return
                 }
             }
@@ -81,7 +82,7 @@ class DataFetcher {
     }
     
     func getItems(type: RequestTypes, completion: @escaping([[String: Any]]?, Error?) -> Void) {
-        networkController.makeGETRequest(url: .posts) { (data, error) in
+        networkController.makeGETRequest(url: type) { (data, error) in
             completion(data, error)
         }
     }
