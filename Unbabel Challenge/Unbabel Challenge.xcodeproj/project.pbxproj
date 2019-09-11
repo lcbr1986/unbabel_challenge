@@ -25,6 +25,11 @@
 		08D216CC23268DD500ABFA77 /* StorageMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D216CB23268DD500ABFA77 /* StorageMock.swift */; };
 		08D216CE2326907900ABFA77 /* LocalPersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D216CD2326907900ABFA77 /* LocalPersistenceManager.swift */; };
 		08D216D02326AA8700ABFA77 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D216CF2326AA8700ABFA77 /* DetailViewController.swift */; };
+		08D216D62326BFD100ABFA77 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D216D52326BFD100ABFA77 /* Comment.swift */; };
+		08D216D82326BFDB00ABFA77 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D216D72326BFDB00ABFA77 /* User.swift */; };
+		08D216DA2326BFED00ABFA77 /* CommentParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D216D92326BFED00ABFA77 /* CommentParser.swift */; };
+		08D216DC2326BFFA00ABFA77 /* UserParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D216DB2326BFFA00ABFA77 /* UserParser.swift */; };
+		08D216DE2326C19700ABFA77 /* DataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D216DD2326C19700ABFA77 /* DataFetcher.swift */; };
 		7AB37021953C59A5DD5F2FC0 /* Pods_Unbabel_ChallengeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 235FF53CD3656D8EA91970D7 /* Pods_Unbabel_ChallengeUITests.framework */; };
 		A40717779DAAA3718FD5FF4E /* Pods_Unbabel_Challenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E809D311FC08E2B6E7532A9 /* Pods_Unbabel_Challenge.framework */; };
 /* End PBXBuildFile section */
@@ -70,6 +75,11 @@
 		08D216CB23268DD500ABFA77 /* StorageMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageMock.swift; sourceTree = "<group>"; };
 		08D216CD2326907900ABFA77 /* LocalPersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalPersistenceManager.swift; sourceTree = "<group>"; };
 		08D216CF2326AA8700ABFA77 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		08D216D52326BFD100ABFA77 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		08D216D72326BFDB00ABFA77 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		08D216D92326BFED00ABFA77 /* CommentParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentParser.swift; sourceTree = "<group>"; };
+		08D216DB2326BFFA00ABFA77 /* UserParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserParser.swift; sourceTree = "<group>"; };
+		08D216DD2326C19700ABFA77 /* DataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFetcher.swift; sourceTree = "<group>"; };
 		235FF53CD3656D8EA91970D7 /* Pods_Unbabel_ChallengeUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Unbabel_ChallengeUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C6BE776ECBDE1BC2F37934E /* Pods-Unbabel Challenge.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unbabel Challenge.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Unbabel Challenge/Pods-Unbabel Challenge.debug.xcconfig"; sourceTree = "<group>"; };
 		3F3105E656EF5E6CAB1407A4 /* Pods-Unbabel ChallengeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unbabel ChallengeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Unbabel ChallengeTests/Pods-Unbabel ChallengeTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -145,6 +155,7 @@
 				08D2168B2321105900ABFA77 /* Assets.xcassets */,
 				08D2168D2321105900ABFA77 /* LaunchScreen.storyboard */,
 				08D216902321105900ABFA77 /* Info.plist */,
+				08D216DD2326C19700ABFA77 /* DataFetcher.swift */,
 			);
 			path = "Unbabel Challenge";
 			sourceTree = "<group>";
@@ -198,8 +209,9 @@
 		08D216C12322B38E00ABFA77 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				08D216C22322B3AD00ABFA77 /* Post.swift */,
-				08D216C42322B3BC00ABFA77 /* PostParser.swift */,
+				08D216D42326BFB800ABFA77 /* Comments */,
+				08D216D32326BFAC00ABFA77 /* Users */,
+				08D216D22326BF9600ABFA77 /* Post */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -210,6 +222,33 @@
 				08D216CD2326907900ABFA77 /* LocalPersistenceManager.swift */,
 			);
 			path = LocalPersistence;
+			sourceTree = "<group>";
+		};
+		08D216D22326BF9600ABFA77 /* Post */ = {
+			isa = PBXGroup;
+			children = (
+				08D216C22322B3AD00ABFA77 /* Post.swift */,
+				08D216C42322B3BC00ABFA77 /* PostParser.swift */,
+			);
+			path = Post;
+			sourceTree = "<group>";
+		};
+		08D216D32326BFAC00ABFA77 /* Users */ = {
+			isa = PBXGroup;
+			children = (
+				08D216D72326BFDB00ABFA77 /* User.swift */,
+				08D216DB2326BFFA00ABFA77 /* UserParser.swift */,
+			);
+			path = Users;
+			sourceTree = "<group>";
+		};
+		08D216D42326BFB800ABFA77 /* Comments */ = {
+			isa = PBXGroup;
+			children = (
+				08D216D52326BFD100ABFA77 /* Comment.swift */,
+				08D216D92326BFED00ABFA77 /* CommentParser.swift */,
+			);
+			path = Comments;
 			sourceTree = "<group>";
 		};
 		DA86590116EFC483D189DE63 /* Frameworks */ = {
@@ -462,14 +501,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				08D216D02326AA8700ABFA77 /* DetailViewController.swift in Sources */,
+				08D216DE2326C19700ABFA77 /* DataFetcher.swift in Sources */,
+				08D216D62326BFD100ABFA77 /* Comment.swift in Sources */,
 				08D216872321105800ABFA77 /* ViewController.swift in Sources */,
+				08D216DC2326BFFA00ABFA77 /* UserParser.swift in Sources */,
 				08D216B3232277D400ABFA77 /* NetworkInterface.swift in Sources */,
 				08D216852321105800ABFA77 /* AppDelegate.swift in Sources */,
 				08D216CE2326907900ABFA77 /* LocalPersistenceManager.swift in Sources */,
+				08D216DA2326BFED00ABFA77 /* CommentParser.swift in Sources */,
 				08D216B723227B9900ABFA77 /* NetworkCommunicator.swift in Sources */,
 				08D216C8232661B300ABFA77 /* StorageInterface.swift in Sources */,
 				08D216C52322B3BC00ABFA77 /* PostParser.swift in Sources */,
 				08D216C32322B3AD00ABFA77 /* Post.swift in Sources */,
+				08D216D82326BFDB00ABFA77 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

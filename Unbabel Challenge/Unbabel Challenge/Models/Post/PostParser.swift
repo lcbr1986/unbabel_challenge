@@ -6,7 +6,7 @@
 //  Copyright © 2019 Luís Rosa. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 struct PostParser {
     static func parsePosts(unparsedPosts: [[String: Any]]) -> [Post] {
