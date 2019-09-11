@@ -108,15 +108,15 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="NsV-ge-Wg8" firstAttribute="top" secondItem="cyd-so-cdG" secondAttribute="bottom" constant="24" id="87e-Tp-emC"/>
-                            <constraint firstItem="OPV-an-Kiw" firstAttribute="trailing" secondItem="GQs-R0-QEg" secondAttribute="trailing" constant="352" id="JBT-4b-iWk"/>
+                            <constraint firstItem="OPV-an-Kiw" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="EsQ-4y-eRe" secondAttribute="trailing" symbolic="YES" id="8dq-Uc-IT9"/>
                             <constraint firstItem="GQs-R0-QEg" firstAttribute="leading" secondItem="OPV-an-Kiw" secondAttribute="leading" constant="20" id="L7a-ZY-z0K"/>
                             <constraint firstItem="NsV-ge-Wg8" firstAttribute="leading" secondItem="OPV-an-Kiw" secondAttribute="leading" constant="20" id="MNd-k2-CKW"/>
                             <constraint firstItem="cyd-so-cdG" firstAttribute="leading" secondItem="OPV-an-Kiw" secondAttribute="leading" constant="20" id="N4w-qq-Kof"/>
                             <constraint firstItem="cyd-so-cdG" firstAttribute="top" secondItem="OPV-an-Kiw" secondAttribute="top" constant="31" id="SD0-Pl-zaA"/>
                             <constraint firstItem="EsQ-4y-eRe" firstAttribute="leading" secondItem="cyd-so-cdG" secondAttribute="trailing" constant="8" id="ScF-du-95C"/>
                             <constraint firstItem="OPV-an-Kiw" firstAttribute="trailing" secondItem="NsV-ge-Wg8" secondAttribute="trailing" constant="20" id="d5V-HW-JLw"/>
-                            <constraint firstItem="OPV-an-Kiw" firstAttribute="trailing" secondItem="EsQ-4y-eRe" secondAttribute="trailing" constant="275" id="e74-ae-xH4"/>
                             <constraint firstItem="EsQ-4y-eRe" firstAttribute="centerY" secondItem="cyd-so-cdG" secondAttribute="centerY" id="vQK-q2-q4F"/>
+                            <constraint firstItem="OPV-an-Kiw" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="GQs-R0-QEg" secondAttribute="trailing" symbolic="YES" id="xLL-3w-1RT"/>
                             <constraint firstItem="GQs-R0-QEg" firstAttribute="top" secondItem="NsV-ge-Wg8" secondAttribute="bottom" constant="29.5" id="zox-xY-SAG"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="OPV-an-Kiw"/>

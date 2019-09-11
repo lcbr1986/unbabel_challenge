@@ -50,7 +50,8 @@ class DataAggregator {
     
     func getPostDetails(post: Post) {
         let author = findAuthor(authorId: post.userId)
-        self.delegate?.didGetPostDetails(author: author, commentsCount: self.comments.count)
+        let postComments = findComments(postId: post.id)
+        self.delegate?.didGetPostDetails(author: author, commentsCount: postComments?.count ?? 0)
     }
     
     func findAuthor(authorId: Int) -> User? {
@@ -58,5 +59,11 @@ class DataAggregator {
             return user.id == authorId
         }
         return user
+    }
+    
+    func findComments(postId: Int) -> [Comment]? {
+        return self.comments.filter({ (comment) -> Bool in
+            return comment.postId == postId
+        })
     }
 }
