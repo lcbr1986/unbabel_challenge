@@ -10,6 +10,7 @@ import UIKit
 
 protocol DataAggregatorDelegate {
     func didFinishLoad(error: Error?)
+    func didGetPostDetails(author: User, commentsCount: Int)
 }
 
 class DataAggregator {
@@ -46,9 +47,9 @@ class DataAggregator {
         self.delegate?.didFinishLoad(error: nil)
     }
     
-    func getPostDetails(post: Post) -> (author: User, commentsCount: Int) {
+    func getPostDetails(post: Post) {
         let author = findAuthor(authorId: post.userId)
-        return(author, self.comments.count)
+        self.delegate?.didGetPostDetails(author: author, commentsCount: self.comments.count)
     }
     
     func findAuthor(authorId: Int) -> User {

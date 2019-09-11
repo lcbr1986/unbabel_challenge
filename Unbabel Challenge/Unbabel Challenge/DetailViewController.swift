@@ -48,14 +48,17 @@ class DetailViewController: UIViewController {
         guard let post = self.post else {
             return
         }
-        let postDetails = dataAggregator.getPostDetails(post: post)
-        self.author = postDetails.author
-        self.commentsCount = postDetails.commentsCount
+        dataAggregator.getPostDetails(post: post)
     }
     
 }
 
 extension DetailViewController: DataAggregatorDelegate {
+    func didGetPostDetails(author: User, commentsCount: Int) {
+        self.author = author
+        self.commentsCount = commentsCount
+    }
+    
     func didFinishLoad(error: Error?) {
         if let _ = error {
             // Show error
@@ -63,4 +66,6 @@ extension DetailViewController: DataAggregatorDelegate {
             loadAuthorData()
         }
     }
+    
+    
 }
