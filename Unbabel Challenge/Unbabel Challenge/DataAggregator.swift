@@ -30,6 +30,7 @@ class DataAggregator {
                     return
                 }
                 self.users = users
+                self.delegate?.didFinishLoad(error: nil)
             }
         }
         dataFetcher.getItems(type: .comments, completion: { (comments, error) in
@@ -42,9 +43,9 @@ class DataAggregator {
                     return
                 }
                 self.comments = comments
+                self.delegate?.didFinishLoad(error: nil)
             }
         })
-        self.delegate?.didFinishLoad(error: nil)
     }
     
     func getPostDetails(post: Post) {

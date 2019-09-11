@@ -25,7 +25,19 @@ class LocalPersistenceManager: StorageInterface {
             }
             completion(storage)
             return
-        default:
+        case .comments:
+            guard let storage = readValue(forKey: type) as [Comment]? else {
+                completion(nil)
+                return
+            }
+            completion(storage)
+            return
+        case .users:
+            guard let storage = readValue(forKey: type) as [User]? else {
+                completion(nil)
+                return
+            }
+            completion(storage)
             return
         }
         

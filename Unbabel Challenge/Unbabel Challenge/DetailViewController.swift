@@ -60,8 +60,9 @@ extension DetailViewController: DataAggregatorDelegate {
     }
     
     func didFinishLoad(error: Error?) {
-        if let _ = error {
+        if let error = error {
             // Show error
+            print("error: \(error.localizedDescription)")
         } else {
             loadAuthorData()
         }

@@ -59,7 +59,7 @@ class Unbabel_ChallengeTests: XCTestCase {
                 XCTFail()
                 return
             }
-            let users = UserParser.parsePosts(unparsedUsers: data)
+            let users = UserParser.parseUsers(unparsedUsers: data)
             XCTAssertEqual(users.count, 2)
             XCTAssertEqual(users[0], User(id: 1, name: "Leanne Graham", email: "Sincere@april.biz", username: "Bret"))
         }
