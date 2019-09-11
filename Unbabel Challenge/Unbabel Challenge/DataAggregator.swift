@@ -40,4 +40,9 @@ class DataAggregator {
             }
         }
     }
+    
+    func getPostDetails(post: Post) -> (author: User, commentsCount: Int) {
+        
+        return(User(id: 0, name: "ble", email: "bla", username: "bla"), 0)
+    }
 }
