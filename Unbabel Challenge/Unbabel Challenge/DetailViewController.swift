@@ -11,11 +11,20 @@ import UIKit
 class DetailViewController: UIViewController {
 
     var post: Post?
+    let dataAggregator = DataAggregator()
+    var users: [User] = []
+    var comments: [Comment] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        loadAuthorData()
+        dataAggregator.loadData { (error) in
+            if let _ = error {
+//                SHOW ERROR ALERT
+            } else {
+                self.loadAuthorData()
+            }
+        }
     }
     
     func loadAuthorData() {

@@ -30,6 +30,7 @@
 		08D216DA2326BFED00ABFA77 /* CommentParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D216D92326BFED00ABFA77 /* CommentParser.swift */; };
 		08D216DC2326BFFA00ABFA77 /* UserParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D216DB2326BFFA00ABFA77 /* UserParser.swift */; };
 		08D216DE2326C19700ABFA77 /* DataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D216DD2326C19700ABFA77 /* DataFetcher.swift */; };
+		08EA25BD2329346500D1B7D9 /* DataAggregator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08EA25BC2329346500D1B7D9 /* DataAggregator.swift */; };
 		7AB37021953C59A5DD5F2FC0 /* Pods_Unbabel_ChallengeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 235FF53CD3656D8EA91970D7 /* Pods_Unbabel_ChallengeUITests.framework */; };
 		A40717779DAAA3718FD5FF4E /* Pods_Unbabel_Challenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E809D311FC08E2B6E7532A9 /* Pods_Unbabel_Challenge.framework */; };
 /* End PBXBuildFile section */
@@ -80,6 +81,7 @@
 		08D216D92326BFED00ABFA77 /* CommentParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentParser.swift; sourceTree = "<group>"; };
 		08D216DB2326BFFA00ABFA77 /* UserParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserParser.swift; sourceTree = "<group>"; };
 		08D216DD2326C19700ABFA77 /* DataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFetcher.swift; sourceTree = "<group>"; };
+		08EA25BC2329346500D1B7D9 /* DataAggregator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataAggregator.swift; sourceTree = "<group>"; };
 		235FF53CD3656D8EA91970D7 /* Pods_Unbabel_ChallengeUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Unbabel_ChallengeUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C6BE776ECBDE1BC2F37934E /* Pods-Unbabel Challenge.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unbabel Challenge.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Unbabel Challenge/Pods-Unbabel Challenge.debug.xcconfig"; sourceTree = "<group>"; };
 		3F3105E656EF5E6CAB1407A4 /* Pods-Unbabel ChallengeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unbabel ChallengeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Unbabel ChallengeTests/Pods-Unbabel ChallengeTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 				08D2168D2321105900ABFA77 /* LaunchScreen.storyboard */,
 				08D216902321105900ABFA77 /* Info.plist */,
 				08D216DD2326C19700ABFA77 /* DataFetcher.swift */,
+				08EA25BC2329346500D1B7D9 /* DataAggregator.swift */,
 			);
 			path = "Unbabel Challenge";
 			sourceTree = "<group>";
@@ -502,6 +505,7 @@
 			files = (
 				08D216D02326AA8700ABFA77 /* DetailViewController.swift in Sources */,
 				08D216DE2326C19700ABFA77 /* DataFetcher.swift in Sources */,
+				08EA25BD2329346500D1B7D9 /* DataAggregator.swift in Sources */,
 				08D216D62326BFD100ABFA77 /* Comment.swift in Sources */,
 				08D216872321105800ABFA77 /* ViewController.swift in Sources */,
 				08D216DC2326BFFA00ABFA77 /* UserParser.swift in Sources */,
