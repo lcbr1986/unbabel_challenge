@@ -64,7 +64,7 @@ class DataFetcher {
                     completion(comments, nil)
                     return
                 case .users:
-                    let users = UserParser.parsePosts(unparsedUsers: data)
+                    let users = UserParser.parseUsers(unparsedUsers: data)
                     self.localStorage.storeItems(type: .users, items: users)
                     completion(users, nil)
                     return

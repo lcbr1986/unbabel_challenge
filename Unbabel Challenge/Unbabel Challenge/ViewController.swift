@@ -65,8 +65,12 @@ extension ViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "detailSegue" {
             let detailViewController = segue.destination as! DetailViewController
-            let index = self.tableView.indexPathForSelectedRow?.row ?? 0
+            let indexPath = self.tableView.indexPathForSelectedRow
+            let index = indexPath?.row ?? 0
             detailViewController.post = self.posts[index]
+            if let indexPath = indexPath {
+                self.tableView.deselectRow(at: indexPath, animated: true)
+            }
         }
     }
 }

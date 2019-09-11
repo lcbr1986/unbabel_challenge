@@ -9,7 +9,7 @@
 import Foundation
 
 struct UserParser {
-    static func parsePosts(unparsedUsers: [[String: Any]]) -> [User] {
+    static func parseUsers(unparsedUsers: [[String: Any]]) -> [User] {
         var users: [User] = []
         for unparsedUser in unparsedUsers {
             if let id = unparsedUser["id"] as? Int,

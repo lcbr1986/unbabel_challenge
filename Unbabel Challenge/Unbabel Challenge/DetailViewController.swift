@@ -39,16 +39,12 @@ class DetailViewController: UIViewController {
             self.title = post.title
         }
         
-        dataAggregator.loadData { (error) in
-            if let _ = error {
-//                SHOW ERROR ALERT
-                print("There was an error")
-            }
-        }
-        self.loadAuthorData()
+        dataAggregator.delegate = self
+        dataAggregator.loadData()
     }
     
     func loadAuthorData() {
+        print("Loaded author data")
         guard let post = self.post else {
             return
         }
@@ -57,4 +53,14 @@ class DetailViewController: UIViewController {
         self.commentsCount = postDetails.commentsCount
     }
     
+}
+
+extension DetailViewController: DataAggregatorDelegate {
+    func didFinishLoad(error: Error?) {
+        if let _ = error {
+            // Show error
+        } else {
+            loadAuthorData()
+        }
+    }
 }
