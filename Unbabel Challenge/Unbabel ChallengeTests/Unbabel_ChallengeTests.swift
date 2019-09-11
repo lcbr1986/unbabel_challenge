@@ -28,13 +28,13 @@ class Unbabel_ChallengeTests: XCTestCase {
 
     
     func testGetPostsResponse() {
-        dataFetcher.getItems(type: .posts) { (data, _) in
+        dataFetcher.getNetworkItems(type: .posts) { (data, _) in
             XCTAssertEqual(data?.count, 4)
         }
     }
     
     func testGetCommentsResponse() {
-        dataFetcher.getItems(type: .comments) { (data, _) in
+        dataFetcher.getNetworkItems(type: .comments) { (data, _) in
             XCTAssertEqual(data?.count, 4)
         }
     }
@@ -42,7 +42,7 @@ class Unbabel_ChallengeTests: XCTestCase {
     //    MARK: Parser tests
     
     func testParsePostsResponse() {
-        dataFetcher.getItems(type: .posts) { (data, _) in
+        dataFetcher.getNetworkItems(type: .posts) { (data, _) in
             guard let data = data else {
                 XCTFail()
                 return
@@ -54,7 +54,7 @@ class Unbabel_ChallengeTests: XCTestCase {
     }
     
     func testParseUserResponse() {
-        dataFetcher.getItems(type: .users) { (data, _) in
+        dataFetcher.getNetworkItems(type: .users) { (data, _) in
             guard let data = data else {
                 XCTFail()
                 return
@@ -66,7 +66,7 @@ class Unbabel_ChallengeTests: XCTestCase {
     }
     
     func testParseCommentResponse() {
-        dataFetcher.getItems(type: .comments) { (data, _) in
+        dataFetcher.getNetworkItems(type: .comments) { (data, _) in
             guard let data = data else {
                 XCTFail()
                 return
@@ -81,13 +81,13 @@ class Unbabel_ChallengeTests: XCTestCase {
     
     func testIfStorageIsEmptyShouldMakeNetworkCall() {
         storageMock.isEmpty = true
-        dataFetcher.tryLocalStorage(type: .posts) { (_, _) in }
+        dataFetcher.getItems(type: .posts) { (_, _) in }
         XCTAssert(networkMock.makeRequest)
     }
     
     func testIfStorageReturnsValuesNetworkCallIsNotMade() {
         storageMock.isEmpty = false
-        dataFetcher.tryLocalStorage(type: .posts) { (_, _) in }
+        dataFetcher.getItems(type: .posts) { (_, _) in }
         XCTAssertFalse(networkMock.makeRequest)
     }
 

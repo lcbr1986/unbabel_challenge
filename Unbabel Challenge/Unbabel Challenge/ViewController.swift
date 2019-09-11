@@ -22,7 +22,7 @@ class ViewController: UIViewController {
     }
     
     func getPosts() {
-        dataFetcher.tryLocalStorage(type: .posts) { (posts, error) in
+        dataFetcher.getItems(type: .posts) { (posts, error) in
             if let error = error {
                 debugPrint("There was an error: \(error.localizedDescription)")
 //                SHOW ERROR ALERT

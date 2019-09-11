@@ -13,7 +13,7 @@ class DataFetcher {
     var networkController: NetworkInterface = NetworkCommunicator(baseUrl: "https://jsonplaceholder.typicode.com")
     var localStorage: StorageInterface = LocalPersistenceManager()
     
-    func tryLocalStorage(type: StorageTypes, completion: @escaping ([Any]?, Error?) -> Void) {
+    func getItems(type: StorageTypes, completion: @escaping ([Any]?, Error?) -> Void) {
         
         localStorage.getStoredItems(type: type) { (items) in
             switch type {
@@ -43,7 +43,7 @@ class DataFetcher {
     }
     
     func makeCall(type: RequestTypes, completion: @escaping ([Any]?, Error?) -> Void) {
-        getItems(type: type) { (data, error) in
+        getNetworkItems(type: type) { (data, error) in
             if let error = error {
                 debugPrint(error.localizedDescription)
                 completion(nil, error)
@@ -81,7 +81,7 @@ class DataFetcher {
         self.localStorage = localStorage
     }
     
-    func getItems(type: RequestTypes, completion: @escaping([[String: Any]]?, Error?) -> Void) {
+    func getNetworkItems(type: RequestTypes, completion: @escaping([[String: Any]]?, Error?) -> Void) {
         networkController.makeGETRequest(url: type) { (data, error) in
             completion(data, error)
         }
