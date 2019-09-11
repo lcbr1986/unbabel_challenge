@@ -54,7 +54,7 @@ class DetailViewController: UIViewController {
 }
 
 extension DetailViewController: DataAggregatorDelegate {
-    func didGetPostDetails(author: User, commentsCount: Int) {
+    func didGetPostDetails(author: User?, commentsCount: Int) {
         self.author = author
         self.commentsCount = commentsCount
     }
